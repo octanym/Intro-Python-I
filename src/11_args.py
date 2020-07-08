@@ -17,7 +17,7 @@ def f2(*args):
   if len(args) == 1:
     return args[0]
   else:
-#last arg + sum args from 1st to the 2nd last
+#    ultimate value + sum of values from 1st to penultimate
     return args[-1] + f2(*args[:-1])
 
 print(f2(1))                    # Should print 1
