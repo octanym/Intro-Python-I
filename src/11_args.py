@@ -55,7 +55,9 @@ print(f3(8))     # Should print 9
 #
 # Note: Google "python keyword arguments".
 
-# YOUR CODE HERE
+def f4(**args):
+  for key, value in args.items():
+    print(f"key: {key}, value: {value}")
 
 # Should print
 # key: a, value: 12
@@ -69,9 +71,9 @@ f4(a=12, b=30)
 f4(city="Berkeley", population=121240, founded="March 23, 1868")
 
 d = {
-    "monster": "goblin",
-    "hp": 3
+  "monster": "goblin",
+  "hp": 3
 }
 
 # How do you have to modify the f4 call below to make this work?
-f4(d)
+f4(**d)
