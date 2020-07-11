@@ -18,15 +18,51 @@ and does the following:
    the format that your program expects arguments to be given.
    Then exit the program.
 
-Note: the user should provide argument input (in the initial call to run the file) and not 
+Note: the user should provide argument input (in the initial call to run the file) and not
 prompted input. Also, the brackets around year are to denote that the argument is
 optional, as this is a common convention in documentation.
 
-This would mean that from the command line you would call `python3 14_cal.py 4 2015` to 
-print out a calendar for April in 2015, but if you omit either the year or both values, 
+This would mean that from the command line you would call `python3 14_cal.py 4 2015` to
+print out a calendar for April in 2015, but if you omit either the year or both values,
 it should use today’s date to get the month and year.
 """
 
 import sys
+# DONT import argparse
 import calendar
 from datetime import datetime
+
+"""
+accepts input of 2 ints
+sys.argv[1], sys.argv[2]
+
+if you omit the args, then print datetime (current time)
+
+if only one arg is passed assume it is the month and default the year arg to 2020
+
+if the only arg passed is not coherent to a monthly int, return a usage statement
+"""
+
+dt = datetime(year=2020, month=7, day=10)
+today = dt.today()
+print(today.year)
+
+
+def whats_the_date(*args):
+    if len(args) == 0:
+        dt = datetime(year=2020, month=7, day=10)
+        today = dt.today()
+        print(today.year)
+    elif len(args) == 2:
+        mm = int(args[0])
+        yyyy = int(args[1])
+        date = datetime(year=yyyy, month=mm, day=0)
+        print(datetime.month, datetime.year)
+    elif len(args) == 1:
+        mm = int(args)
+        date = datetime(year=2020, month=mm, day=0)
+        print(datetime.month, datetime.year)
+
+
+whats_the_date(sys.argv[1], sys.argv[2])
+# # could making this into a list/dictionary comprehension be useful?
