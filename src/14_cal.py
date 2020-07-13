@@ -36,33 +36,51 @@ from datetime import datetime
 accepts input of 2 ints
 sys.argv[1], sys.argv[2]
 
-if you omit the args, then print datetime (current time)
+if you omit the args, then print datetime current time
 
 if only one arg is passed assume it is the month and default the year arg to 2020
 
+if 2 args are passed in assume month is arg[0] and year is arg[1] and render the calendar for that month and year
+
 if the only arg passed is not coherent to a monthly int, return a usage statement
+
+
 """
 
 dt = datetime(year=2020, month=7, day=10)
 today = dt.today()
-print(today.year)
+
+# mm = sys.argv[1]
+# yyyy = sys.argv[2]
+
+# mmyyyy = [int(i) for i in sys.argv if int(i) > 0]
+
+# sys.argv is a list of strings
+
+sysargs = [i for i in sys.argv]
 
 
-def whats_the_date(*args):
-    if len(args) == 0:
-        dt = datetime(year=2020, month=7, day=10)
-        today = dt.today()
-        print(today.year)
+def whats_the_date(args):
+    if len(args) == 1:
+        # ([filename])
+        print("current calendar month")
     elif len(args) == 2:
-        mm = int(args[0])
-        yyyy = int(args[1])
-        date = datetime(year=yyyy, month=mm, day=0)
-        print(datetime.month, datetime.year)
-    elif len(args) == 1:
-        mm = int(args)
-        date = datetime(year=2020, month=mm, day=0)
-        print(datetime.month, datetime.year)
+        # args = ([filename, mm])
+        print("calendar of month 'mm' for current year")
+        # check if value of mm is less than 12
+    elif len(args) == 3:
+        # args = ([filename, mm, yyyy])
+        # check if value of mm is less than 12
+        # check if value of yyyy is less than 2020
+        print("that month and year")
+    else:
+        print("acceptable inputs should be formatted mm yyyy")
 
 
-whats_the_date(sys.argv[1], sys.argv[2])
-# # could making this into a list/dictionary comprehension be useful?
+whats_the_date(sysargs)
+
+# # try setting sysargs to a list comprehension
+# # intuition was correct - this was the solution! nice job!
+# # now you just need to implement the detail of the behavior
+# # NOTE args gets formatted as an array in a tuple
+# # pick up at declaring formatting rules
