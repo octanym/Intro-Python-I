@@ -47,40 +47,35 @@ if the only arg passed is not coherent to a monthly int, return a usage statemen
 
 """
 
-dt = datetime(year=2020, month=7, day=10)
+yy = 2020
+mm = 7
+dd = 13
+dt = datetime(yy, mm, dd)
 today = dt.today()
-
-# mm = sys.argv[1]
-# yyyy = sys.argv[2]
-
-# mmyyyy = [int(i) for i in sys.argv if int(i) > 0]
-
-# sys.argv is a list of strings
-
+# month = calendar.month(yy, args[1])
+# sys.argv is a list of the arguments as strings
 sysargs = [i for i in sys.argv]
+inputlength = len(sysargs)
+
+curryear = datetime.now().year
+currmonth = datetime.now().month
 
 
 def whats_the_date(args):
-    if len(args) == 1:
-        # ([filename])
-        print("current calendar month")
-    elif len(args) == 2:
-        # args = ([filename, mm])
-        print("calendar of month 'mm' for current year")
-        # check if value of mm is less than 12
-    elif len(args) == 3:
-        # args = ([filename, mm, yyyy])
-        # check if value of mm is less than 12
-        # check if value of yyyy is less than 2020
-        print("that month and year")
+    if inputlength == 1:
+        calendarcurr = calendar.month(curryear, currmonth)
+        print(calendarcurr)
+    elif inputlength == 2:
+        month = int(args[1])
+        calendarmonth = calendar.month(curryear, month)
+        print(calendarmonth)
+    elif inputlength == 3:
+        month = int(args[1])
+        year = int(args[2])
+        calendarmonthyear = calendar.month(year, month)
+        print(calendarmonthyear)
     else:
-        print("acceptable inputs should be formatted mm yyyy")
+        print("acceptable inputs should be formatted as mm yyyy")
 
 
 whats_the_date(sysargs)
-
-# # try setting sysargs to a list comprehension
-# # intuition was correct - this was the solution! nice job!
-# # now you just need to implement the detail of the behavior
-# # NOTE args gets formatted as an array in a tuple
-# # pick up at declaring formatting rules
