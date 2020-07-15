@@ -46,14 +46,6 @@ if the only arg passed is not coherent to a monthly int, return a usage statemen
 
 
 """
-
-yy = 2020
-mm = 7
-dd = 13
-dt = datetime(yy, mm, dd)
-today = dt.today()
-# month = calendar.month(yy, args[1])
-# sys.argv is a list of the arguments as strings
 sysargs = [i for i in sys.argv]
 inputlength = len(sysargs)
 
