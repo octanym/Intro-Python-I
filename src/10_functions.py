@@ -2,13 +2,15 @@
 
 # YOUR CODE HERE
 def is_even(int):
-  if int % 2 == 0:
-    print("Even!")
-  else:
-    print("Odd!")
+    if int % 2 == 0:
+        print("Even!")
+    else:
+        print("Odd!")
+
 
 # Read a number from the keyboard
 num = input("Enter a number: ")
+string = input("Enter a word: ")
 num = int(num)
 
 # Print out "Even!" if the number is even. Otherwise print "Odd"
